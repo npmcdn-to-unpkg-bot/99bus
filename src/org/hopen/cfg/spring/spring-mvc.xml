@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:c="http://www.springframework.org/schema/c" 
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:lang="http://www.springframework.org/schema/lang" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<context:component-scan base-package="org.hopen.*.action" />
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean class="org.hopen.core.SysInternalResourceViewResolver" p:prefix="/WEB-INF/pages/mode2" p:suffix=".jsp" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+			<property name="messageConverters">
+				<list>
+					<bean id="fastJsonHttpMessageConverter" class="org.hopen.core.FastJsonHttpMessageConverter">
+						<property name="supportedMediaTypes">
+							<list>
+								<value>text/html;charset=UTF-8</value><!-- 避免IE出现下载JSON文件的情况 -->
+							</list>
+						</property>
+					</bean>
+				</list>
+			</property>
+	</bean>
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.hopen.interceptors.SecurityInterceptor">
+				<!-- 不需要权限验证的地址 -->
+				<property name="excludeUrls">
+					<list>
+						<value>/prdct/index</value><!-- 登录主画面 -->
+						<value>/prdct/toLst</value>
+						<value>/prdct/toBdDtl</value>
+						<value>/prdct/toTrsfrBdDtl</value>
+						<value>/prdct/toTrnsfrLst</value>
+						<value>/prdct/toJckrBd</value>
+						<value>/prdct/toOverBdDtl</value>
+						<value>/usr/toResetLoginPwdShow</value>
+						<value>/usr/toResetLoginPwd</value>
+						<value>/usr/resetLoginPwd</value>
+						<value>/thr/toActvty</value>
+						<value>/thr/deving</value>
+						<value>/usr/lgn</value>
+						<value>/usr/toLgn</value>
+						<value>/rgstr/toRgstr</value>
+						<value>/vldt/sndSMS</value>
+						<value>/rgstr/toAgrmnt</value>
+						<value>/rgstr/toInptPWD</value>
+						<value>/rgstr/rgstr</value>
+						<value>/cshoprtn/checkLogin</value>
+					</list>
+				</property>
+				<property name="excludeClientLimitUrls">
+					<list>
+						<value>/thr/to406</value><!--系统排除消息画面-->
+						
+					</list>
+				</property>
+				<property name="devCludeUrls">
+					<list>
+						<value>/prdct/toTrnsfrLst</value>
+						<value>/prdct/toJckrBd</value><!--系统排除消息画面-->
+					</list>
+				</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+</beans>

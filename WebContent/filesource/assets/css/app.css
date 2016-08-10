@@ -1,0 +1,124 @@
+/* Write your styles */
+body{
+font-family: 'Arial Normal', 'Arial';
+font-weight: 400;
+font-style: normal;
+}
+.down{
+	position: relative;
+	height: 10px;
+	margin-top: 1px;
+	width:74%;
+	float:left;
+} 
+.title{
+	margin-top:-8px;
+	height: 10px;
+	width:24%;
+	float:right;
+} 
+.down .box1,.down .box2{
+	position: absolute;
+
+}
+.down p{
+	position: absolute;
+	left: 80%;
+	top: -25px;
+	color: #898989;
+}
+
+.down .box1{
+	width: 65%;
+	height: 6px;
+	background-color: #c1c1ce;
+	border-radius: 3px;
+}
+.down .box2{
+	width: 65%;
+	height: 6px;
+	background-color: #ff8f2d;
+	border-radius: 3px 0 0 3px;
+}
+
+.down .box2.wan{
+	width: 0;
+}
+
+.down .box2.star{
+	width: 65%;
+	border-radius: 3px;
+}
+
+.color-xms{
+	color:#FC693D;
+}
+.color-as{
+	color:#999999;
+}
+.color-sls{
+	color:#035B7F;
+}
+.color-lls{
+	color:#5DC1CC;
+}
+/**��Ҫ��ɫ ��#fb793a**/
+.background-orange{
+	background:#fb793a;
+}
+.color-orange{
+	color:#fb793a;
+}
+.border-orange{
+	border-color:#fb793a;
+}
+/**��Ҫ��ɫ ��#f24535**/
+.background-red{
+	background:#f24535;
+}
+.color-red{
+	color:#f24535;
+}
+.border-red{
+	border-color:#f24535;
+}
+/**��Ҫ��ɫ ��#00b2ee**/
+.background-blue{
+	background:#00b2ee;
+}
+.color-blue{
+	color:#00b2ee;
+}
+.border-blue{
+	border-color:#00b2ee;
+}
+
+/**��Ҫ��ɫ ��#f0f1f4**/
+.background-gray{
+	background:#f0f1f4;
+}
+
+.color-gray{
+	color:#f0f1f4;
+}
+
+.border-gray{
+	border-color:#f0f1f4;
+}
+
+.color-white{
+	color:white;
+}
+
+.border-c{
+	border-radius:5px;
+}
+
+.background-adj{
+	background-color:#fff;
+	filter:Alpha(Opacity=90);
+	opacity:0.4;
+	top:0;
+	left:0;
+	z-index:10;
+}

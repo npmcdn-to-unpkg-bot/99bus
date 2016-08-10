@@ -1,0 +1,2 @@
+
+convertHrefToForm('control/activityDetail?v='+new Date().getTime())

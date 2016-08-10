@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+body{
+	font-family: "\5FAE\8F6F\96C5\9ED1" ;
+}
+
+.button{
+	background: #ea5505;
+	color:white;
+	padding:5px;
+	text-align: center;
+    display: inline-block;
+    border-radius:3px;
+    line-height:33px;
+    font-size: 14px;
+    font-family: "微软雅黑"
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right{
+	float: right;
+}
+
+.padding-10 {
+	padding:10px;
+}
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+.clearfix {
+	display: inline-table; 
+	}
+/* Hides from IE-mac \*/
+
+* html .clearfix { 
+	height: 1%;
+ }
+.clearfix { 
+	display: block; 
+	}
+
